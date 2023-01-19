@@ -6,8 +6,15 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:44:16 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/19 10:56:40 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/19 12:34:49 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	f_end_line(t_line *line, char str)
+{
+	line = NULL;
+
+	line = 
+}

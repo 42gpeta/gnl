@@ -1,0 +1,7 @@
+1/ regarder si on a un \n dans la stash
+2/ rappeler read
+3/a si \n, extraire jusqua \n compris
+	1) enlever de l'extraction de stash
+3/b si pas de \n, fin
+
+while read != 0
