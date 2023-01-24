@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 10:44:20 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/24 19:24:56 by gpeta            ###   ########.fr       */
+/*   Created: 2023/01/24 17:17:12 by gpeta             #+#    #+#             */
+/*   Updated: 2023/01/24 17:22:43 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H	
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-//# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
+#include <fcntl.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
-
-typedef struct s_line
+int	main(void)
 {
-	char			*content;
-	struct s_line	*next;
-}	t_line;
+	int		fd;
+	char	*line;
 
-char	*get_next_line(int fd);
-t_line	*f_lstlast(t_line *stash);
+	fd = open("./test/simple", O_RDONLY);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		printf("%s", line);
+		free(line);
+	}
 
-
-
-
-
-
-
-#endif
+	return (0);
+}
