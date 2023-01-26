@@ -1,19 +1,21 @@
 #include "get_next_line.h"
 
-int	main(void)
+int	main(int ac, char **argv)
 {
 	int		fd;
-	int		i;
+	int		index;
 	char	*line;
 
 	fd = open("./test/simple.txt", O_RDONLY);
-	i = 0;
-	while (line = get_next_line(fd))
+	index = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		printf("[%d] : %s\n", i, line);
-		i++;
+		printf("[%d] : %s\n", index, line);
+		free(line);
+		line = get_next_line(fd);
+		index++;
 	}
-	free(line);
 
 	return (0);
 }
