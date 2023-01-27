@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:12 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/26 16:16:51 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/27 16:53:54 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*get_next_line(int fd)
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	buf[BUFFER_SIZE] = '\0';
-	stash = f_copy_to_stash(buf);
 	printf("stash = %s\n", stash); // a supprimer
 	ret = read(fd, buf, BUFFER_SIZE);
 	if (ret == -1)
@@ -40,6 +39,7 @@ char	*get_next_line(int fd)
 		printf("ret == 0\n"); // a supprimer
 		return (NULL);
 	}
+	stash = f_copy_buf_to_stash(buf);
 	return (line);
 }
 

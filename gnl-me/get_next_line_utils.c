@@ -6,13 +6,13 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/26 16:51:15 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/27 16:26:57 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*f_copy_to_stash(char *buf)
+/* char	*f_copy_buf_to_stash(char *buf)
 {
 	char	*stash;
 	char	*test;
@@ -29,10 +29,17 @@ char	*f_copy_to_stash(char *buf)
 	{
 		stash = ft_strjoin(stash, buf);
 		printf("tst");
+		break;
 	}
 	return (stash);
-}
+} */
 
+/* char	*f_copy_buf_to_stash(char *buf)
+{
+	char	*stash;
+
+	stash = ft_strrchr(buf, '\n');
+} */
 
 
 
@@ -41,18 +48,58 @@ char	*f_copy_to_stash(char *buf)
 
 /* DEJA CODE */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	int	len;
+static int	f_in_trim(char c, char const *set);
 
-	len = ft_strlen(s);
-	if ((unsigned char)c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (len-- > 0)
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	j;
+	size_t	iword;
+	char	*pn;
+
+	if (!s1)
+		return (NULL);
+	i = 0;
+	j = ft_strlen(s1);
+	while (f_in_trim(s1[i], set) && s1[i] != '\0')
+		i++;
+	while (f_in_trim(s1[j - 1], set) && j > i)
+		j--;
+	pn = malloc (sizeof(char) * ((j - i) + 1));
+	if (!pn)
+		return (NULL);
+	iword = 0;
+	while (i < j)
 	{
-		if (s[len] == (unsigned char)c)
-			return ((char *)&s[len]);
+		pn[iword] = s1[i];
+		iword++;
+		i++;
 	}
+	pn[iword] = '\0';
+	return (pn);
+}
+
+int	f_in_trim(char c, char const *set)
+{
+	while (*set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
 	return (NULL);
 }
 

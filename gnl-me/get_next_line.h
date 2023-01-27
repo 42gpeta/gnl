@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/26 16:35:00 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/27 17:06:19 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ typedef struct s_line
 
 /* FONCTIONS */
 char	*get_next_line(int fd);
-char	*f_copy_to_stash(char *buf);
-char	*ft_strrchr(const char *s, int c);
+char	*f_copy_buf_to_stash(char *buf);
+char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+static int	f_in_trim(char c, char const *set);
 
 
 
