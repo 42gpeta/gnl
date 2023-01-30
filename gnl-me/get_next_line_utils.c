@@ -6,47 +6,44 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/27 16:26:57 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/30 17:28:25 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* char	*f_copy_buf_to_stash(char *buf)
+/********************************************/
+/*											*/
+/*				NEW FUNCTIONS				*/
+/*											*/
+/********************************************/
+
+char	*f_copy_buf_to_stash(char *buf)
 {
 	char	*stash;
-	char	*test;
 	int		i;
-	int		len;
+	char	*stop;
+	i = 0;
 
-	// i = 0;
-	// len = ft_strlen(ft_strrchr(buf, '\n'));
-	// printf("len stash = %d\n", len); // a supprimer
-	// stash = malloc(sizeof(char) * len);
-	test = stash;
-	buf = "bonjour les amis";
-	while (!ft_strrchr(buf, '\n'))
+	stop = ft_strchr(buf, '\n');
+	stash = malloc(sizeof(char) * (ft_strlen(stop) + 1));
+	while (buf[i] != *stop && i < BUFFER_SIZE)
 	{
-		stash = ft_strjoin(stash, buf);
-		printf("tst");
-		break;
+		stash[i] = buf[i];
+		i++;
 	}
+	stash[i] = '\0';
+	printf("stash : %s\n", stash);
+
 	return (stash);
-} */
-
-/* char	*f_copy_buf_to_stash(char *buf)
-{
-	char	*stash;
-
-	stash = ft_strrchr(buf, '\n');
-} */
+}
 
 
-
-
-
-
-/* DEJA CODE */
+/********************************************/
+/*											*/
+/*				DEJA CODE					*/
+/*											*/
+/********************************************/
 
 static int	f_in_trim(char c, char const *set);
 

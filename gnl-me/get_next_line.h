@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/27 17:06:19 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/30 17:28:14 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 7
 # endif
 
 /* INCLUDE */
@@ -25,14 +25,14 @@
 # include <stdio.h>
 
 
-/* STRUCTURES */
+/* STRUCTURE */
 typedef struct s_line
 {
 	char			*content;
 	struct s_line	*next;
 }	t_line;
 
-/* FONCTIONS */
+/* FUNCTION */
 char	*get_next_line(int fd);
 char	*f_copy_buf_to_stash(char *buf);
 char	*ft_strchr(const char *s, int c);

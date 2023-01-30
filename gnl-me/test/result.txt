@@ -1,2 +1,15 @@
-main buf : bonjour
-les amis
+gnl buf :  les am
+gnl buf : is
+Aure
+gnl buf : voir
+le
+gnl buf : s
+copai
+gnl buf : nscopai
+gnl buf : ns
+
+
+GNL dernier buf = ns
+GNL line = (null)
+
+------------------
