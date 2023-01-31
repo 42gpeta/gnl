@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/30 17:28:25 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/01/31 18:04:51 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,54 +38,29 @@ char	*f_copy_buf_to_stash(char *buf)
 	return (stash);
 }
 
+char	*f_search_bn(char *stash)
+{
+	char	*line;
+	int		i;
+	char	*stop;
+	i = 0;
+
+	stop = ft_strchr(stash, '\n');
+	line = malloc(sizeof(char) * (ft_strlen(stop) + 1));
+	while (stash[i] != *stop && i < BUFFER_SIZE)
+	{
+		line[i] = stash[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (stash);
+}
 
 /********************************************/
 /*											*/
 /*				DEJA CODE					*/
 /*											*/
 /********************************************/
-
-static int	f_in_trim(char c, char const *set);
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	i;
-	size_t	j;
-	size_t	iword;
-	char	*pn;
-
-	if (!s1)
-		return (NULL);
-	i = 0;
-	j = ft_strlen(s1);
-	while (f_in_trim(s1[i], set) && s1[i] != '\0')
-		i++;
-	while (f_in_trim(s1[j - 1], set) && j > i)
-		j--;
-	pn = malloc (sizeof(char) * ((j - i) + 1));
-	if (!pn)
-		return (NULL);
-	iword = 0;
-	while (i < j)
-	{
-		pn[iword] = s1[i];
-		iword++;
-		i++;
-	}
-	pn[iword] = '\0';
-	return (pn);
-}
-
-int	f_in_trim(char c, char const *set)
-{
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -105,7 +80,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (*s++)
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }

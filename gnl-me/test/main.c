@@ -1,6 +1,6 @@
-#include "get_next_line.h"
+#include "../get_next_line.h"
 
-int	main(int ac, char **argv)
+int	main(void)
 {
 	int		fd;
 	int		index;
@@ -12,10 +12,9 @@ int	main(int ac, char **argv)
 	while (line != NULL)
 	{
 		printf("[%d] : %s\n", index, line);
-		free(line);
 		line = get_next_line(fd);
+		free(line);
 		index++;
 	}
-
 	return (0);
 }
