@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:12 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/31 18:50:48 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/01 18:54:12 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,29 @@ char	*get_next_line(int fd)
 	/* Capture de la lecture transfere dans le buf */
 	ret = 1;
 	i = 0;
-	while (ret > 0)
+	while (ret)
 	{
 		ret = read(fd, buf, BUFFER_SIZE);
 		buf[ret] = '\0';
 		if (!stash)
 		{
-			stash = malloc(sizeof(char) * 1);
+			stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
 		}
 		stash = ft_strjoin(stash,buf);
-		printf("gnl buf : %s\n", buf);
-		printf("gnl stash : %s\n", stash);
-		i++;
+		if (ft_strchr(stash, '\n'))
+		{
+			// stash = f_del_front_bn(buf);
+			line = f_search_bn(stash);
+			break;
+		}
+		
+		// printf("gnl buf : %s\n", buf); // a supprimer
+		// printf("gnl stash : %s\n", stash); // a supprimer
 	}
-	line = f_search_bn(stash);
-	// f_copy_buf_to_stash(buf, line);
-	printf("\nGNL stash = %s\n", stash); // a supprimer
 
-	// line[ft_strlen(stash)] = '\0';
-	printf("\n\nGNL dernier buf = %s\n", buf); // a supprimer
-	printf("GNL line = %s\n", line); // a supprimer
-	printf("\n------------------\n"); // a supprimer
+	// printf("\n\nGNL dernier buf = %s\n", buf); // a supprimer
+	// printf("GNL stash = %s\n", stash); // a supprimer
+	// printf("\n------------------\n"); // a supprimer
 	if (ret == -1)
 		printf("error a traitee\n"); // a supprimer
 /* 	else if (ret == 0)

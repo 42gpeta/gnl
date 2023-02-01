@@ -1,4 +1,4 @@
-NAME =			gnl
+#NAME =			gnl
 CC = 			cc
 CFLAGS = 		-Wall -Wextra -Werror
 NORMINETTE =	norminette -R CheckForbiddenSourceHeader *.c *.h
@@ -6,7 +6,7 @@ NORMINETTE =	norminette -R CheckForbiddenSourceHeader *.c *.h
 ###############################################
 ##	SOURCES
 
-SRC_MAIN = get_next_line.c get_next_line_utils.c
+SRC_MAIN = main.c get_next_line.c get_next_line_utils.c
 SRC_MAINTEST = maintest.c get_next_line.c get_next_line_utils.c
 
 OBJ = $(SRC:.c=.o)
@@ -15,24 +15,22 @@ OBJ = $(SRC:.c=.o)
 ###############################################
 ##	RULES
 
-all : $(NAME)
+#all : $(NAME)
 
 %.o : %.c
 	$(CC) -c $<
 #	$(CC) -o $@ -c $<
 
-$(NAME) : $(OBJ)
-	$(CC) $(OBJ) -o gnl
+#$(NAME) : $(OBJ)
+#	$(CC) $(OBJ) -o gnl
 #	$(CC) $(OBJ) -o $@ $^
 
 main : $(OBJ)
-	$(CC) -g ./test/main.c $(SRC_MAIN) && ./a.out
+	$(CC) -g $(SRC_MAIN) && ./a.out
 #	$(CC) $(CFLAGS) $(SRC_MAIN)&& ./a.out
-
 
 gdb_main :
 	$(CC) -g $(SRC_MAIN) && gdb ./a.out
-
 
 maintest :
 	$(CC) -g $(SRC_MAINTEST) && ./a.out
@@ -42,9 +40,8 @@ gdb_maintest :
 	$(CC) -g $(SRC_MAINTEST) && gdb ./a.out
 
 result : main
-	$(CC) $(SRC_MAIN)&& ./a.out > ./test/result.txt
+	$(CC) $(SRC_MAIN) && ./a.out > ./test/result.txt
 	cat -e ./test/result.txt
-
 
 clean :
 	rm -rf $(OBJ)

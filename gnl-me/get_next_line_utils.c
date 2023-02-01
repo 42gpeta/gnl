@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/01/31 18:04:51 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/01 19:18:52 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,43 +18,105 @@
 /*											*/
 /********************************************/
 
-char	*f_copy_buf_to_stash(char *buf)
-{
-	char	*stash;
-	int		i;
-	char	*stop;
-	i = 0;
-
-	stop = ft_strchr(buf, '\n');
-	stash = malloc(sizeof(char) * (ft_strlen(stop) + 1));
-	while (buf[i] != *stop && i < BUFFER_SIZE)
-	{
-		stash[i] = buf[i];
-		i++;
-	}
-	stash[i] = '\0';
-	printf("stash : %s\n", stash);
-
-	return (stash);
-}
-
+/* Cherche le '\n' dans la stash */
 char	*f_search_bn(char *stash)
 {
 	char	*line;
-	int		i;
 	char	*stop;
-	i = 0;
+	int		i;
+	int		len;
+	int		res;
 
 	stop = ft_strchr(stash, '\n');
-	line = malloc(sizeof(char) * (ft_strlen(stop) + 1));
-	while (stash[i] != *stop && i < BUFFER_SIZE)
+	len = ft_strlen(stash);
+	res = len - ft_strlen(stop);
+	line = malloc(sizeof(char) * len + 1);
+	i = 0;
+	while (stash[i] != *stop && i < res)
 	{
 		line[i] = stash[i];
 		i++;
 	}
 	line[i] = '\0';
+	return (line);
+}
+
+
+/* Reprend ce qui est a droite du /n vers la stash */
+char	*f_del_front_bn(char *stash)
+{
+	char	*new_stash;
+	int		i;
+	int		start;
+	int		len_new_stash;
+	char		*stop;
+	
+	// stop = ft_strchr(stash, '\n') + 1;
+	start = ft_strlen(ft_strchr(stash, '\n')) + 1;
+	len_new_stash = ft_strlen(stash) - start;
+	
+	stash = ft_substr(stash, start, len_new_stash);
+/* 	
+	i = 1;
+	
+	while (stash[i] != *stop && stash[i] != '\0')
+	{
+		i++;
+	}
+	i++;
+	while (stash[i] != '\0')
+	{
+		new_stash[i] = stash[i];
+		i++;
+	}
+	buf[i] = '\0'; */
+
 	return (stash);
 }
+
+static char	*f_malloc(char const *s, size_t begin, size_t len);
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*ns;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	ns = f_malloc(s, start, len);
+	if (!ns)
+		return (NULL);
+	i = 0;
+	while (i < len && start < ft_strlen(s))
+	{
+		ns[i] = s[start++];
+		i++;
+	}
+	ns[i] = '\0';
+	return (ns);
+}
+
+char	*f_malloc(char const *s, size_t begin, size_t len)
+{
+	char	*ns;
+	size_t	slen;
+
+	slen = ft_strlen(s);
+	if (begin > slen)
+	{
+		ns = malloc(sizeof(char));
+		if (!ns)
+			return (NULL);
+		ns[0] = '\0';
+		return (ns);
+	}
+	else if (begin + len > slen)
+		ns = malloc(sizeof(char) * (slen - begin + 1));
+	else
+		ns = malloc(sizeof(char) * (len + 1));
+	return (ns);
+}
+
 
 /********************************************/
 /*											*/
@@ -113,3 +175,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	join [i + j] = '\0';
 	return (join);
 }
+
