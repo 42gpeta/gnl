@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/01 19:18:52 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/02 19:31:25 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,48 +30,54 @@ char	*f_search_bn(char *stash)
 	stop = ft_strchr(stash, '\n');
 	len = ft_strlen(stash);
 	res = len - ft_strlen(stop);
-	line = malloc(sizeof(char) * len + 1);
+	
+	line = malloc(sizeof(char) * res + 2);
+	/* Protection du malloc */
+	if (!line)
+		return (NULL);
+	
 	i = 0;
-	while (stash[i] != *stop && i < res)
+	while (stash[i] != *stop /* && i < res */)
 	{
 		line[i] = stash[i];
 		i++;
 	}
+	line[i] = '\n';
+	i++;
 	line[i] = '\0';
 	return (line);
 }
 
 
-/* Reprend ce qui est a droite du /n vers la stash */
-char	*f_del_front_bn(char *stash)
+/* Reprend ce qui est a droite du /n (dans le buf) vers la stash */
+char	*f_del_front_bn(char *buf)
 {
 	char	*new_stash;
 	int		i;
-	int		start;
-	int		len_new_stash;
-	char		*stop;
+	int		j;
+	int		len;
 	
-	// stop = ft_strchr(stash, '\n') + 1;
-	start = ft_strlen(ft_strchr(stash, '\n')) + 1;
-	len_new_stash = ft_strlen(stash) - start;
-	
-	stash = ft_substr(stash, start, len_new_stash);
-/* 	
-	i = 1;
-	
-	while (stash[i] != *stop && stash[i] != '\0')
-	{
+	i = 0;
+	while (buf[i] != '\n' && buf)
 		i++;
-	}
 	i++;
-	while (stash[i] != '\0')
+	len = ft_strlen(buf) - i;
+	
+	new_stash = malloc(sizeof(char) * (len + 1));
+	/* Protection du malloc */
+	if (!new_stash)
+		return (NULL);
+	
+	j = 0;
+	while (buf[i] != '\0' && buf)
 	{
-		new_stash[i] = stash[i];
+		new_stash[j] = buf[i];
 		i++;
+		j++;
 	}
-	buf[i] = '\0'; */
+	new_stash[j] = '\0';
 
-	return (stash);
+	return (new_stash);
 }
 
 static char	*f_malloc(char const *s, size_t begin, size_t len);

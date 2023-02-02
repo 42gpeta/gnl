@@ -11,13 +11,14 @@ int	main(void)
 	line = get_next_line(fd);
 	while (line && index < 5)
 	{
-		printf("[%d] : %s\n", index, line);
-		line = get_next_line(fd);
 		if (!line)
 			break;
+		printf("[%d] : %s\n", index, line);
 		free(line);
+		line = get_next_line(fd);
 		index++;
 	}
+	free(line);
 	close(fd);
 	return (0);
 }
