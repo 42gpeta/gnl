@@ -21,7 +21,7 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7
+#  define BUFFER_SIZE 10
 # endif
 
 
@@ -37,6 +37,7 @@ typedef struct s_line
 char	*get_next_line(int fd);
 char	*f_search_bn(char *stash);
 char	*f_del_front_bn(char *stash);
+char	*f_last_line(char *stash);
 // char	*f_copy_buf_to_stash(char *buf);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);

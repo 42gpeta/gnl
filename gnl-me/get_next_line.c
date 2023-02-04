@@ -13,6 +13,7 @@
 #include "get_next_line.h"
 
 /* BUT == obtenir la line jusqu'a '\n' */
+// char	*f_last_line(char *stash);
 
 char	*get_next_line(int fd)
 {
@@ -34,9 +35,9 @@ char	*get_next_line(int fd)
 
 	// stash = NULL;
 	/* Capture de la lecture transfere dans le buf */
-	ret = 1;
+	ret = BUFFER_SIZE;
 	i = 0;
-	while (ret)
+	while (ret == BUFFER_SIZE)
 	{
 		ret = read(fd, buf, BUFFER_SIZE);
 		buf[ret] = '\0';
@@ -55,16 +56,41 @@ char	*get_next_line(int fd)
 			break;
 		}
 	
+		else if (ret < BUFFER_SIZE && ret > 0)
+		{
+			line = f_last_line(stash);
+			free(buf);
+		}
 
-		if (ret == -1)
-			printf("error a traitee\n"); // a supprimer
 		else if (ret == 0)
 		{
+			// line = f_last_line(stash);
 			printf("ret == 0\n"); // a supprimer
+			// return (line);
 			return (NULL);
 		}
+		else if (ret == -1)
+			printf("error a traitee\n"); // a supprimer
 	}
 	return (line);
 }
 
+char	*f_last_line(char *stash)
+{
+	char	*lst_line;
+	int		i;
+
+	lst_line = malloc(sizeof(char) * ft_strlen(stash));
+	if (!lst_line)
+		return (NULL);
+
+	i = 0;
+	while (stash[i] != '\0')
+	{
+		lst_line[i] = stash[i];
+		i++;
+	}
+	lst_line[i] = '\0';
+	return (lst_line);
+}
 // end
