@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/06 14:38:10 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/06 19:46:58 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7
+// #  define BUFFER_SIZE 7
+#  define BUFFER_SIZE 100000
 # endif
 
 /* STRUCTURE */

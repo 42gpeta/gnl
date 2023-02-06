@@ -7,7 +7,8 @@ int	main(void)
 	char	*line;
 
 	// fd = open("./test/simple.txt", O_RDONLY);
-	fd = open("./test/lorem.txt", O_RDONLY);
+	// fd = open("./test/lorem.txt", O_RDONLY);
+	fd = open("./test/biglorem.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("open() fail\n");
@@ -15,8 +16,9 @@ int	main(void)
 	}
 	
 	index = 0;
+	line = 0;
 	line = get_next_line(fd);
-	while (line /* && index < 5 */)
+	while (line /* && index < 1 */)
 	{
 		if (!line)
 			break;

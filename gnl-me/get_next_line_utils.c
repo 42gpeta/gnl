@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/06 15:18:19 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/06 19:51:22 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (NULL);
 	while (*s != '\0')
 	{
 		if (*s == (unsigned char)c)
@@ -35,6 +37,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 		i++;
@@ -48,25 +52,33 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*join;
 	int		len;
 
-	if (!s1 || !s2)
-		return (0);
+	// if (!s1 || !s2)
+	// 	len = (int)ft_strlen(s2);
+	// else
+	// 	len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
 	len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
+	// if (!s1 || !s2)
+	// 	return(NULL);
+
+	// len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
 	join = malloc(sizeof(char) * len + 1);
 	if (!join)
 		return (NULL);
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1 && s1[i] != '\0')
 	{
 		join[i] = s1[i];
 		i++;
 	}
+
 	j = 0;
-	while (s2[j] != '\0')
+	while (s2 && s2[j] != '\0')
 	{
 		join[i + j] = s2[j];
 		j++;
 	}
 	join [i + j] = '\0';
+	free((void*)s1);	
 	return (join);
 }
 
@@ -103,6 +115,7 @@ char	*f_search_bn(char *stash)
 	line[i] = '\n';
 	i++;
 	line[i] = '\0';
+	free(stash);
 	return (line);
 }
 
@@ -115,7 +128,7 @@ char	*f_del_front_bn(char *buf)
 	int		len;
 	
 	i = 0;
-	while (buf[i] != '\n' && buf)
+	while (/* buf &&  */buf[i] != '\n')
 		i++;
 	i++;
 	len = ft_strlen(buf) - i;
@@ -126,14 +139,14 @@ char	*f_del_front_bn(char *buf)
 		return (NULL);
 	
 	j = 0;
-	while (buf[i] != '\0' && buf)
+	while (buf && buf[i] != '\0')
 	{
 		new_stash[j] = buf[i];
 		i++;
 		j++;
 	}
 	new_stash[j] = '\0';
-
+	free (buf); // ici ou dans la fonction get_next_line ?
 	return (new_stash);
 }
 
@@ -141,6 +154,9 @@ char	*f_last_line(char *stash)
 {
 	char	*lst_line;
 	int		i;
+
+	if (!stash)
+		return (NULL);
 
 	lst_line = malloc(sizeof(char) * ft_strlen(stash));
 	if (!lst_line)

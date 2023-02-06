@@ -39,9 +39,16 @@ maintest :
 gdb_maintest :
 	$(CC) -g $(SRC_MAINTEST) && gdb ./a.out
 
-result : main
-	$(CC) $(SRC_MAIN) && ./a.out > ./test/result.txt
-	cat -e ./test/result.txt
+val :
+	cc -g main.c get_next_line.c get_next_line_utils.c
+	valgrind --leak-check=full ./a.out
+
+# result : main
+#	$(CC) $(SRC_MAIN) && ./a.out > ./test/result.txt
+#	cat -e ./test/result.txt
+
+log :
+	git log | grep "    " | head -3  | cut -c 5-
 
 clean :
 	rm -rf $(OBJ)
@@ -50,7 +57,7 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re log
 
 
 
