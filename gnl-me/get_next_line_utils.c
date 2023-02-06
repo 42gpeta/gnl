@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/06 14:39:17 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:18:19 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ char	*f_search_bn(char *stash)
 	line[i] = '\0';
 	return (line);
 }
-
 
 /* Reprend ce qui est a droite du /n (dans le buf) vers la stash */
 char	*f_del_front_bn(char *buf)

@@ -36,12 +36,10 @@ int	main(void)
 	// close(fd);
 	if (close(fd) == -1)
 	{
-		printf("close() fail\n");
+		printf("close() fail : %d\n", fd);
 		return (1);
 	}
 	else
-	{
-		printf("close() succes\n");
-	}
+		printf("close() succes : %d\n", fd);
 	return (0);
 }

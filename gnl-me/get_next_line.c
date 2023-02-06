@@ -6,13 +6,11 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:12 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/06 14:42:18 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:19:01 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/* BUT == obtenir la line jusqu'a '\n' */
 
 char	*get_next_line(int fd)
 {
@@ -67,5 +65,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-
-// end
