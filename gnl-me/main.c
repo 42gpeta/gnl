@@ -33,11 +33,15 @@ int	main(void)
 	}
 	free(line);
 	
-	close(fd);
+	// close(fd);
 	if (close(fd) == -1)
 	{
 		printf("close() fail\n");
 		return (1);
+	}
+	else
+	{
+		printf("close() succes\n");
 	}
 	return (0);
 }

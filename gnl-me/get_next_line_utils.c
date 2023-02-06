@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/02 19:31:25 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:39:17 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,65 @@
 
 /********************************************/
 /*											*/
-/*				NEW FUNCTIONS				*/
+/*			#1	DEJA CODE					*/
+/*											*/
+/********************************************/
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*join;
+	int		len;
+
+	if (!s1 || !s2)
+		return (0);
+	len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
+	join = malloc(sizeof(char) * len + 1);
+	if (!join)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		join[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		join[i + j] = s2[j];
+		j++;
+	}
+	join [i + j] = '\0';
+	return (join);
+}
+
+/********************************************/
+/*											*/
+/*			#2	NEW FUNCTIONS				*/
 /*											*/
 /********************************************/
 
@@ -80,105 +138,21 @@ char	*f_del_front_bn(char *buf)
 	return (new_stash);
 }
 
-static char	*f_malloc(char const *s, size_t begin, size_t len);
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*f_last_line(char *stash)
 {
-	char	*ns;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	ns = f_malloc(s, start, len);
-	if (!ns)
-		return (NULL);
-	i = 0;
-	while (i < len && start < ft_strlen(s))
-	{
-		ns[i] = s[start++];
-		i++;
-	}
-	ns[i] = '\0';
-	return (ns);
-}
-
-char	*f_malloc(char const *s, size_t begin, size_t len)
-{
-	char	*ns;
-	size_t	slen;
-
-	slen = ft_strlen(s);
-	if (begin > slen)
-	{
-		ns = malloc(sizeof(char));
-		if (!ns)
-			return (NULL);
-		ns[0] = '\0';
-		return (ns);
-	}
-	else if (begin + len > slen)
-		ns = malloc(sizeof(char) * (slen - begin + 1));
-	else
-		ns = malloc(sizeof(char) * (len + 1));
-	return (ns);
-}
-
-
-/********************************************/
-/*											*/
-/*				DEJA CODE					*/
-/*											*/
-/********************************************/
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0')
-	{
-		if (*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (c == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
+	char	*lst_line;
 	int		i;
-	int		j;
-	char	*join;
-	int		len;
 
-	if (!s1 || !s2)
-		return (0);
-	len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
-	join = malloc(sizeof(char) * len + 1);
-	if (!join)
+	lst_line = malloc(sizeof(char) * ft_strlen(stash));
+	if (!lst_line)
 		return (NULL);
+
 	i = 0;
-	while (s1[i] != '\0')
+	while (stash[i] != '\0')
 	{
-		join[i] = s1[i];
+		lst_line[i] = stash[i];
 		i++;
 	}
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		join[i + j] = s2[j];
-		j++;
-	}
-	join [i + j] = '\0';
-	return (join);
+	lst_line[i] = '\0';
+	return (lst_line);
 }
-

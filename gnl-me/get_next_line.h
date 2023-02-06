@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/01 19:19:47 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/06 14:38:10 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 7
 # endif
-
-
 
 /* STRUCTURE */
 typedef struct s_line
@@ -38,21 +36,8 @@ char	*get_next_line(int fd);
 char	*f_search_bn(char *stash);
 char	*f_del_front_bn(char *stash);
 char	*f_last_line(char *stash);
-// char	*f_copy_buf_to_stash(char *buf);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-static char	*f_malloc(char const *s, size_t begin, size_t len);
-
-// char	*ft_strtrim(char const *s1, char const *set);
-// static int	f_in_trim(char c, char const *set);
-
-
-
-
-
-
-
 
 #endif
