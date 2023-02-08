@@ -43,6 +43,10 @@ val :
 	cc -g main.c get_next_line.c get_next_line_utils.c
 	valgrind --leak-check=full ./a.out
 
+# ko_list :
+# 	make m 2> ../test/ko | grep "KO" 1> ../test/ko-list.txt
+# 	rm ../test/ko
+
 # result : main
 #	$(CC) $(SRC_MAIN) && ./a.out > ./test/result.txt
 #	cat -e ./test/result.txt

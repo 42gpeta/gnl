@@ -1,0 +1,20 @@
+files/big_line_no_nl: TIMEOUT
+files/big_line_with_nl: TIMEOUT
+
+files/multiple_line_no_nl: 1.OK 2.OK 3.KO 4.KO 5.KO
+6.OK
+files/multiple_line_with_nl: 1.OK 2.KO 3.KO 4.OK 5.OK ret == 0
+6.OK
+
+files/alternate_line_nl_no_nl: 1.OK 2.OK 3.KO 4.KO 5.KO 6.KO ret == 0
+7.SIGSEGV
+
+files/alternate_line_nl_with_nl: 1.OK 2.OK 3.KO 4.KO 5.KO 6.KO ret == 0
+7.SIGSEGV
+
+(files/big_line_no_nl:)
+stdin: 1.OK 2.OK 3.KO 4.KO 5.KO 6.KO ret == 0
+7.SIGSEGV
+
+
+git commit -m "ME 11 : BUFFERSIZE=100 000 000 OK ; leaks OK ; error testeur : ko-list.txt" 

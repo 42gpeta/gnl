@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/06 19:51:22 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/08 16:21:57 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,12 +128,14 @@ char	*f_del_front_bn(char *buf)
 	int		len;
 	
 	i = 0;
-	while (/* buf &&  */buf[i] != '\n')
+	while (buf && buf[i] != '\n')
 		i++;
 	i++;
 	len = ft_strlen(buf) - i;
 	
-	new_stash = malloc(sizeof(char) * (len + 1));
+	// new_stash = ft_calloc((len + 1), sizeof(char));
+	new_stash = malloc(sizeof(char) * (len + 1)); // ME 10
+	new_stash = 0;
 	/* Protection du malloc */
 	if (!new_stash)
 		return (NULL);
@@ -146,7 +148,7 @@ char	*f_del_front_bn(char *buf)
 		j++;
 	}
 	new_stash[j] = '\0';
-	free (buf); // ici ou dans la fonction get_next_line ?
+	// free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
 	return (new_stash);
 }
 
@@ -171,3 +173,32 @@ char	*f_last_line(char *stash)
 	lst_line[i] = '\0';
 	return (lst_line);
 }
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)s)[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*nwtab;
+
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (size && nmemb > SIZE_MAX / size)
+		return (NULL);
+	nwtab = (void *)malloc((nmemb * size) * sizeof(char));
+	if (!nwtab)
+		return (NULL);
+	ft_memset(nwtab, '\0', nmemb * size);
+	return (nwtab);
+}
+
