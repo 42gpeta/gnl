@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:12 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/08 18:48:33 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/08 19:14:31 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*get_next_line(int fd)
 		if (ft_strchr(stash, '\n'))
 		{
 			line = f_search_bn(stash);
-			stash = f_del_front_bn(&buf);
+			stash = f_del_front_bn(buf);
 			free(buf); // ici ou dans la fonction f_del_front_bn ? ici == no leaks
 			break;
 		}

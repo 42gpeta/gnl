@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/08 18:42:53 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/08 19:14:12 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ char	*f_search_bn(char *stash)
 // 	return (new_stash);
 // }
 
-char	*f_del_front_bn(char **buf) // v2
+char	*f_del_front_bn(char *buf) // v2
 {
 	char	*new_stash;
 	int		i;
@@ -160,10 +160,10 @@ char	*f_del_front_bn(char **buf) // v2
 	int		len;
 	
 	i = 0;
-	while (*buf && *buf[i] != '\n')
+	while (buf && buf[i] != '\n')
 		i++;
 	i++;
-	len = ft_strlen(*buf) - i;
+	len = ft_strlen(buf) - i;
 	
 	// new_stash = ft_calloc((len + 1), sizeof(char));
 	new_stash = malloc(sizeof(char) * (len + 1)); // ME 10
@@ -173,14 +173,14 @@ char	*f_del_front_bn(char **buf) // v2
 		return (NULL);
 	
 	j = 0;
-	while (*buf && *buf[i] != '\0')
+	while (buf && buf[i] != '\0')
 	{
-		new_stash[j] = *buf[i];
+		new_stash[j] = buf[i];
 		i++;
 		j++;
 	}
 	new_stash[j] = '\0';
-	free (*buf); // ici ou dans la fonction get_next_line ? ici == leaks
+	free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
 	return (new_stash);
 }
 char	*f_last_line(char *stash)
