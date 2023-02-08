@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/08 16:21:57 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/08 18:42:53 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	join [i + j] = '\0';
-	free((void*)s1);	
+	free((void*)s1);
 	return (join);
 }
 
@@ -120,7 +120,39 @@ char	*f_search_bn(char *stash)
 }
 
 /* Reprend ce qui est a droite du /n (dans le buf) vers la stash */
-char	*f_del_front_bn(char *buf)
+// char	*f_del_front_bn(char *buf) // orginal
+// {
+// 	char	*new_stash;
+// 	int		i;
+// 	int		j;
+// 	int		len;
+	
+// 	i = 0;
+// 	while (buf && buf[i] != '\n')
+// 		i++;
+// 	i++;
+// 	len = ft_strlen(buf) - i;
+	
+// 	// new_stash = ft_calloc((len + 1), sizeof(char));
+// 	new_stash = malloc(sizeof(char) * (len + 1)); // ME 10
+// 	new_stash = 0;
+// 	/* Protection du malloc */
+// 	if (!new_stash)
+// 		return (NULL);
+	
+// 	j = 0;
+// 	while (buf && buf[i] != '\0')
+// 	{
+// 		new_stash[j] = buf[i];
+// 		i++;
+// 		j++;
+// 	}
+// 	new_stash[j] = '\0';
+// 	free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
+// 	return (new_stash);
+// }
+
+char	*f_del_front_bn(char **buf) // v2
 {
 	char	*new_stash;
 	int		i;
@@ -128,10 +160,10 @@ char	*f_del_front_bn(char *buf)
 	int		len;
 	
 	i = 0;
-	while (buf && buf[i] != '\n')
+	while (*buf && *buf[i] != '\n')
 		i++;
 	i++;
-	len = ft_strlen(buf) - i;
+	len = ft_strlen(*buf) - i;
 	
 	// new_stash = ft_calloc((len + 1), sizeof(char));
 	new_stash = malloc(sizeof(char) * (len + 1)); // ME 10
@@ -141,17 +173,16 @@ char	*f_del_front_bn(char *buf)
 		return (NULL);
 	
 	j = 0;
-	while (buf && buf[i] != '\0')
+	while (*buf && *buf[i] != '\0')
 	{
-		new_stash[j] = buf[i];
+		new_stash[j] = *buf[i];
 		i++;
 		j++;
 	}
 	new_stash[j] = '\0';
-	// free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
+	free (*buf); // ici ou dans la fonction get_next_line ? ici == leaks
 	return (new_stash);
 }
-
 char	*f_last_line(char *stash)
 {
 	char	*lst_line;
@@ -174,31 +205,31 @@ char	*f_last_line(char *stash)
 	return (lst_line);
 }
 
-void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t	i;
+// void	*ft_memset(void *s, int c, size_t n)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = (unsigned char)c;
-		i++;
-	}
-	return (s);
-}
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		((unsigned char *)s)[i] = (unsigned char)c;
+// 		i++;
+// 	}
+// 	return (s);
+// }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*nwtab;
+// void	*ft_calloc(size_t nmemb, size_t size)
+// {
+// 	void	*nwtab;
 
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	if (size && nmemb > SIZE_MAX / size)
-		return (NULL);
-	nwtab = (void *)malloc((nmemb * size) * sizeof(char));
-	if (!nwtab)
-		return (NULL);
-	ft_memset(nwtab, '\0', nmemb * size);
-	return (nwtab);
-}
+// 	if (nmemb == 0 || size == 0)
+// 		return (malloc(0));
+// 	if (size && nmemb > SIZE_MAX / size)
+// 		return (NULL);
+// 	nwtab = (void *)malloc((nmemb * size) * sizeof(char));
+// 	if (!nwtab)
+// 		return (NULL);
+// 	ft_memset(nwtab, '\0', nmemb * size);
+// 	return (nwtab);
+// }
 

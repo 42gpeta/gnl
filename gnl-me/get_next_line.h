@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/08 16:24:45 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/08 18:16:11 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-// #  define BUFFER_SIZE 7 /* par default */
+#  define BUFFER_SIZE 7 /* par default */
 // #  define BUFFER_SIZE 12583 /* limite dans ME 10 */
-#  define BUFFER_SIZE 100000000 /* limite dans ME 11 */
+// #  define BUFFER_SIZE 100000 /* limite dans ME 11 */
 # endif
 
 /* STRUCTURE */
@@ -42,7 +42,7 @@ char	*f_last_line(char *stash);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
+// void	*ft_memset(void *s, int c, size_t n);
+// void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif
