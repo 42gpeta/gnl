@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/09 15:00:16 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:48:39 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	join [i + j] = '\0';
-	// free((void*)s1);
+	// free((void*)s1); // ***
+	free((void*)s2);
 	return (join);
 }
 
@@ -188,7 +189,30 @@ char	*f_del_front_bn(char *buf) // v2
 	// free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
 	// return (new_stash);
 }
-char	*f_last_line(char *stash)
+
+// char	*f_last_line(char *stash) // original
+// {
+// 	char	*lst_line;
+// 	int		i;
+
+// 	if (!stash)
+// 		return (NULL);
+
+// 	lst_line = malloc(sizeof(char) * ft_strlen(stash));
+// 	if (!lst_line)
+// 		return (NULL);
+
+// 	i = 0;
+// 	while (stash[i] != '\0')
+// 	{
+// 		lst_line[i] = stash[i];
+// 		i++;
+// 	}
+// 	lst_line[i] = '\0';
+// 	return (lst_line);
+// }
+
+char	*f_last_line(char *stash) // v2
 {
 	char	*lst_line;
 	int		i;
@@ -196,7 +220,7 @@ char	*f_last_line(char *stash)
 	if (!stash)
 		return (NULL);
 
-	lst_line = malloc(sizeof(char) * ft_strlen(stash));
+	lst_line = malloc(sizeof(char) * (ft_strlen(stash) + 1));
 	if (!lst_line)
 		return (NULL);
 
@@ -210,31 +234,4 @@ char	*f_last_line(char *stash)
 	return (lst_line);
 }
 
-// void	*ft_memset(void *s, int c, size_t n)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (i < n)
-// 	{
-// 		((unsigned char *)s)[i] = (unsigned char)c;
-// 		i++;
-// 	}
-// 	return (s);
-// }
-
-// void	*ft_calloc(size_t nmemb, size_t size)
-// {
-// 	void	*nwtab;
-
-// 	if (nmemb == 0 || size == 0)
-// 		return (malloc(0));
-// 	if (size && nmemb > SIZE_MAX / size)
-// 		return (NULL);
-// 	nwtab = (void *)malloc((nmemb * size) * sizeof(char));
-// 	if (!nwtab)
-// 		return (NULL);
-// 	ft_memset(nwtab, '\0', nmemb * size);
-// 	return (nwtab);
-// }
 

@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:12 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/09 14:48:52 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:48:56 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*get_next_line(int fd)
 		else if (ret < BUFFER_SIZE && ret > 0)
 		{
 			line = f_last_line(stash);
-			free(buf);
+			// free(buf); // ***
 		}
 
 		else if (ret == 0)
@@ -65,12 +65,12 @@ char	*get_next_line(int fd)
 			printf("ret == 0\n"); // a supprimer
 			free(line);
 			free(stash);
-			free(buf);
+			// free(buf); // ***
 			return (NULL);
 		}
 		else if (ret == -1)
 			printf("error a traitee\n"); // a supprimer
 	}
-	// free(buf);
+	// free(buf); // ***
 	return (line);
 }

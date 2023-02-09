@@ -9,7 +9,8 @@ int	main(void)
 	// fd = open("./test/simple.txt", O_RDONLY);
 	// fd = open("./test/lorem.txt", O_RDONLY);
 	// fd = open("./test/biglorem.txt", O_RDONLY);
-	fd = open("./tripouille/files/multiple_line_no_nl", O_RDONLY);
+	// fd = open("./tripouille/files/multiple_line_no_nl", O_RDONLY);
+	fd = open("./tripouille/files/41_no_nl", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("open() fail\n");
