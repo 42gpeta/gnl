@@ -1,5 +1,0 @@
-[37mfiles/multiple_line_no_nl: [32m1.OK [32m2.OK [31m3.KO [31m4.KO [31m5.KO [32m6.OK ret == 0
-[37mfiles/multiple_line_with_nl: [32m1.OK [31m2.KO [31m3.KO [32m4.OK [32m5.OK [32m6.OK ret == 0
-[37mfiles/alternate_line_nl_no_nl: [32m1.OK [32m2.OK [31m3.KO [31m4.KO [31m5.KO [31m6.KO ret == 0
-[37mfiles/alternate_line_nl_with_nl: [32m1.OK [32m2.OK [31m3.KO [31m4.KO [31m5.KO [31m6.KO ret == 0
-[37mstdin: [32m1.OK [32m2.OK [31m3.KO [31m4.KO [31m5.KO [31m6.KO ret == 0
