@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/13 13:47:02 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 15:55:58 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	join [i + j] = '\0';
-	// free((void*)s1); //****
-	free((void*)s2);
+	free((void*)s1);
 	return (join);
 }
 
@@ -122,10 +121,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 char	*f_search_bn(char *stash) // v2
 {
 	char	*line;
-	char	*stop;
 	int		i;
-	int		len;
-	int		res;
+	// char	*stop;
+	// int		len;
+	// int		res;
 
 	// stop = ft_strchr(stash, '\n');
 	// len = ft_strlen(stash);
@@ -215,10 +214,34 @@ char	*delete(char *stash)
 
 char	*f_del_front_bn(char *buf) // v2
 {
-	while (*buf != '\n')
-		buf++;
-	buf++;
-	return ((char *)buf);
+	char	*new_stash;
+	int		i;
+	int		j;
+	int		len;
+	
+	i = 0;
+	while (buf && buf[i] != '\n')
+		i++;
+	i++;
+	len = ft_strlen(buf) - i;
+	
+	// new_stash = ft_calloc((len + 1), sizeof(char));
+	new_stash = malloc(sizeof(char) * (len + 1)); // ME 10
+	// new_stash = 0;
+	/* Protection du malloc */
+	if (!new_stash)
+		return (NULL);
+	
+	j = 0;
+	while (buf && buf[i] != '\0')
+	{
+		new_stash[j] = buf[i];
+		i++;
+		j++;
+	}
+	new_stash[j] = '\0';
+	free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
+	return (new_stash);
 }
 
 // char	*f_last_line(char *stash) // original

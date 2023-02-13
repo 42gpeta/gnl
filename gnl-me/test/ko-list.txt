@@ -1,0 +1,18 @@
+[37mfiles/41_with_nl: [31m1.KO ret == 0
+[37mfiles/41_no_nl: [31m1.KO [32m2.OK ret == 0
+[37mfiles/41_with_nl: [31m1.KO ret == 0
+[37mfiles/43_with_nl: [31m1.KO ret == 0
+[37mfiles/multiple_nlx5: [31m1.KO ret == 0
+[37mfiles/alternate_line_nl_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [31m6.KO ret == 0
+[37mfiles/alternate_line_nl_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [31m6.KO ret == 0
+[37mstdin: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [31m6.KO ret == 0
+[37mfiles/41_no_nl: [31m1.KO [32m2.OK ret == 0
+[37mfiles/41_with_nl: [31m1.KO ret == 0
+[37mfiles/42_with_nl: [31m1.KO ret == 0
+[37mfiles/43_with_nl: [31m1.KO ret == 0
+[37mfiles/multiple_nlx5: [31m1.KO ret == 0
+[37mfiles/multiple_line_no_nl: [31m1.KO ret == 0
+[37mfiles/multiple_line_with_nl: [31m1.KO ret == 0
+[37mfiles/alternate_line_nl_no_nl: [31m1.KO ret == 0
+[37mfiles/alternate_line_nl_with_nl: [31m1.KO ret == 0
+[37mstdin: [31m1.KO ret == 0

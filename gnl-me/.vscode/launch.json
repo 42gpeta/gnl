@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             // "program": "${fileDirname}/bin/${fileBasenameNoExtension}",
-            "program": "/mnt/nfs/homes/gpeta/Documents/CURSUS/PROJECT_gnl/gnl/gnl-me/a.out", // 42
+            "program": "/mnt/nfs/homes/gpeta/Documents/CURSUS/PROJECT_gnl/gnl-old-2/gnl-me/a.out", // 42
             // "program": "/home/glodi/Documents/gnl/gnl-me/a.out", // maison
             "args": [],
             "stopAtEntry": false,
