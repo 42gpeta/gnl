@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:50:28 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/13 15:54:01 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 17:53:02 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(void)
 	// fd = open("./test/lorem.txt", O_RDONLY);
 	// fd = open("./test/biglorem.txt", O_RDONLY);
 
-	fd = open("./tripouille/files/41_no_nl", O_RDONLY);
-	// fd = open("./tripouille/files/41_with_nl", O_RDONLY); // error : derniere ligne ne s'affiche pas
+	// fd = open("./tripouille/files/41_no_nl", O_RDONLY);
+	fd = open("./tripouille/files/41_with_nl", O_RDONLY); // error : derniere ligne ne s'affiche pas
 // 	// fd = open("./tripouille/files/42_no_nl", O_RDONLY);
 // 	// fd = open("./tripouille/files/42_with_nl", O_RDONLY);
 // 	// fd = open("./tripouille/files/43_no_nl", O_RDONLY);
@@ -63,7 +63,6 @@ int	main(void)
 	}
 	free(line);
 
-	// close(fd);
 	if (close(fd) == -1)
 	{
 		printf("close() fail : %d\n", fd);

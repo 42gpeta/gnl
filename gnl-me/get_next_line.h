@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/13 15:56:14 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 18:32:48 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7 /* par default */
+// #  define BUFFER_SIZE 7 /* par default */
 // #  define BUFFER_SIZE 12583 /* limite dans ME 10 */
 // #  define BUFFER_SIZE 100000 /* limite dans ME 11 */
+#  define BUFFER_SIZE 41 /* testeur */
 # endif
 
 /* STRUCTURE */
@@ -45,6 +46,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strcpy(char *dest, char *src);
 // char	*delete(char *stash);
 char	*ft_strdup(const char *s);
+char	*ft_strdup2(char *s);
 
 
 #endif

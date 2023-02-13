@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/13 15:55:58 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 18:32:31 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	join [i + j] = '\0';
 	free((void*)s1);
+	// free((void*)s2);
 	return (join);
 }
 
@@ -305,6 +306,27 @@ char	*ft_strdup(const char *s)
 		i++;
 	}
 	ps[i] = '\0';
+	return (ps);
+}
+
+char	*ft_strdup2(char *s)
+{
+	size_t	i;
+	char	*ps;
+	size_t	len;
+
+	len = ft_strlen(s);
+	ps = malloc(sizeof(char) * len + 1);
+	if (!ps)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		ps[i] = s[i];
+		i++;
+	}
+	ps[i] = '\0';
+	free(s);
 	return (ps);
 }
 

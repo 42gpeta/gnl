@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/13 15:42:53 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 18:41:33 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	int		ret;
 
 	/* Protection si pas de fichier OU BUFFER_SIZE a 0 */
-	if (fd < 0 ||/*  BUFFER_SIZE > 2147483647 || */ BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE <= 0)
 		return (NULL);
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -37,56 +37,55 @@ char	*get_next_line(int fd)
 	{
 		ret = read(fd, buf, BUFFER_SIZE);
 		buf[ret] = '\0';
-		if (ret < BUFFER_SIZE && ret > 0)
+
+		if (ret < 0)
+			printf("error a traitee\n"); // a supprimer
+
+		else if (ret == 0)
+		{
+			// if (ft_strlen(stash) > 0)
+			if (*stash != 0)
+			{
+				line = ft_strdup2(stash);
+				*stash = 0;
+				return(line);
+			}
+			printf("ret == 0\n"); // a supprimer
+			free(line);
+			break;
+		}
+
+		else if (ret > 0 && ret < BUFFER_SIZE) // BUFFER_SIZE > ret > 0
 		{
 			if (!stash)
 			{
-				// stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
-				// stash = malloc(sizeof(char) * 1);
-				stash = malloc(sizeof(char));
+				stash = malloc(sizeof(char) * 1);
 				*stash = 0;
-				// if (!stash)
-					// return (NULL);
 			}
 			stash = ft_strjoin(stash,buf);
-			// line = f_last_line(stash);
-			line = ft_strdup(stash);
-			// free(line);
-			free(stash);
+			line = f_search_bn(stash);
+			stash = f_del_front_bn(stash);
 			free(buf);
 			return(line);
 		}
 
-		else if (ret == 0)
+		else // cas classique BUFFER_SIZE == ret
 		{
-			printf("ret == 0\n"); // a supprimer
-			free(line);
-			return (NULL);
-		}
+			if (!stash)
+			{
+				stash = malloc(sizeof(char));
+				*stash = 0;
+			}
+			stash = ft_strjoin(stash,buf);
 
-		if (!stash)
-		{
-			// stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
-			// stash = malloc(sizeof(char) * 1);
-			stash = malloc(sizeof(char));
-			*stash = 0;
-			// if (!stash)
-				// return (NULL);
+			if (ft_strchr(stash, '\n'))
+			{
+				line = f_search_bn(stash);
+				stash = f_del_front_bn(buf);
+				// free(buf); // ici ou dans la fonction f_del_front_bn ? ici == no leaks
+				return (line);
+			}
 		}
-		stash = ft_strjoin(stash,buf);
-		
-		if (ft_strchr(stash, '\n'))
-		{
-			line = f_search_bn(stash);
-			stash = f_del_front_bn(buf);
-			// free(buf); // ici ou dans la fonction f_del_front_bn ? ici == no leaks
-			return (line);
-		}
-	
-
-	else if (ret == -1)
-		printf("error a traitee\n"); // a supprimer
 	}
 	return (NULL);
 }
-
