@@ -71,7 +71,7 @@ int main (void)
 	str = get_next_line(fd);
 	while (str != NULL)
 	{
-		// printf("%s\n", str);
+		printf("%s\n", str);
 		free(str);
 		str = get_next_line(fd);
 	}

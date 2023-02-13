@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:12 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/10 20:08:33 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 13:49:04 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*get_next_line(int fd)
 {
 	char	*buf;
-	static char	*stash = NULL;
+	static char	*stash = 0;
 	// static char	*stash;
 	char	*line;
 	int		ret;
@@ -29,47 +29,26 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (NULL);
 	line = 0;
-	// if (!stash)
-	// {
-	// 	// stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	// 	// stash = malloc(sizeof(char) * 1);
-	// 	stash = malloc(sizeof(char));
-	// 	// *stash = 0;
-	// 	// if (!stash)
-	// 		// return (NULL);
-	// }
 
 	/* Capture de la lecture transfere dans le buf */
 	ret = BUFFER_SIZE;
 	// ret = read(fd, buf, BUFFER_SIZE);
 	while (ret > 0 && !(ft_strchr(stash, '\n')))
 	{
-		printf("open\n");
+		// printf("open\n");
 		ret = read(fd, buf, BUFFER_SIZE);
+		if (ret == 0)
+			return (NULL);
 		buf[ret] = '\0';
 		stash = ft_strjoin(stash,buf);
-		printf("entrer : %s\n", stash);
-		printf("youhou\n");
-		// free(buf); // ****
-		// if (ft_strchr(stash, '\n'))
-		// {
-			// line = f_search_bn(stash);
-			// stash = f_del_front_bn(stash);
-			// return (line);
-		// 	break;
-		// }
-
-		// if ((ft_strlen(stash) < BUFFER_SIZE) && ret == 0)
-		// {
-		// 	line = f_last_line(stash);
-		// 	return (line);
-	// }
 	}
-	printf("sortie stash: %s\n", stash);
+	// printf("sortie stash: %s\n", stash);
+	// line = malloc(sizeof(char) * ft_strlen(stash) + 1);
+	// line = ft_strdup(stash);
 	line = f_search_bn(stash);
-	printf("line f : %s\n", line);
+	// printf("line f : %s\n", line);
 	stash = delete(stash);
-	printf("static : %s\n", stash);
+	// printf("static : %s\n", stash);
 	// if (ret == 0)
 	// {
 	// 	line = f_last_line(stash);

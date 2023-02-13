@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/10 20:09:32 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/13 13:47:02 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!join)
 		return (NULL);
 	i = 0;
-	while (s1 && s1[i] != '\0')
+	while (s1[i] && s1[i] != '\0')
 	{
 		join[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2 && s2[j] != '\0')
+	while (s2[j] && s2[j] != '\0')
 	{
 		join[i + j] = s2[j];
 		j++;
@@ -131,20 +131,21 @@ char	*f_search_bn(char *stash) // v2
 	// len = ft_strlen(stash);
 	// res = len - ft_strlen(stop);
 	i = 0;
-	while (stash && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 		i++;
 	i++;
 	line = malloc(sizeof(char) * i + 1);
-	/* Protection du malloc */
-	if (!line)
+	// stash = malloc(sizeof(char) * i + 1);
+	
+	/* Protection des mallocs */
+	if (!line || !stash)
 		return (NULL);
 	i = 0;
-	while (stash && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 	{
 		line[i] = stash[i];
 		i++;
 	}
-	i++;
 	line[i] = '\n';
 	i++;
 	line[i] = '\0';
@@ -190,10 +191,8 @@ char	*delete(char *stash)
 	int	i;
 	int j;
 	int len;
-
 	char	*str;
-
-	j = 0;
+	str = 0;
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
@@ -201,13 +200,14 @@ char	*delete(char *stash)
 	len = (ft_strlen(stash)- i);
 	printf("len : %d\n", len);
 	str = malloc(sizeof(char) * (len) + 1);
+	j = 0;
 	while (stash[i])
 	{
 		str[j] = stash[i];
 		i++;
 		j++;
 	}
-	// j++;
+	j++;
 	str[j] = '\0';
 	free(stash);
 	return (str);
@@ -265,4 +265,23 @@ char	*f_last_line(char *stash) // v2
 	return (lst_line);
 }
 
+char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	char	*ps;
+	size_t	len;
+
+	len = ft_strlen(s);
+	ps = malloc(sizeof(char) * len + 1);
+	if (!ps)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		ps[i] = s[i];
+		i++;
+	}
+	ps[i] = '\0';
+	return (ps);
+}
 
