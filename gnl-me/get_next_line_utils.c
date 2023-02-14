@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 16:05:16 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/14 16:15:55 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,11 @@ char	*f_search_bn(char *stash) // v2
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	i++;
-	line = malloc(sizeof(char) * i + 1);
+
+	if (ft_strchr(stash, '\n') == NULL)
+		line = malloc(sizeof(char) * i + 1);
+	else
+		line = malloc(sizeof(char) * i + 2);
 
 	/* Protection des mallocs */
 	if (!line || !stash)
