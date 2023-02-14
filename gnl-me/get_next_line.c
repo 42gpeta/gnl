@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 16:25:10 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/14 19:22:34 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,25 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (NULL);
 	line = 0;
+	
+	if (ft_strchr(stash, '\n'))
+	{
+		line = f_search_bn(stash);
+		stash = f_del_front_bn(stash);
+		return (line);
+	}
+		
 
 	/* Capture de la lecture transfere dans le buf */
 	ret = BUFFER_SIZE;
 	// ret = read(fd, buf, BUFFER_SIZE);
 	while (ret)
 	{
-		ret = read(fd, buf, BUFFER_SIZE);
-		buf[ret] = '\0';
+		if (!ft_strchr(stash, '\n'))
+		{
+			ret = read(fd, buf, BUFFER_SIZE);
+			buf[ret] = '\0';
+		}
 
 		if (ret < 0)
 		{
@@ -64,19 +75,20 @@ char	*get_next_line(int fd)
 			break;
 		}
 
-		else if (ret > 0 && ret < BUFFER_SIZE) // BUFFER_SIZE > ret > 0
-		{
-			if (!stash)
-			{
-				stash = malloc(sizeof(char) * 1);
-				*stash = 0;
-			}
-			stash = ft_strjoin(stash,buf);
-			line = f_search_bn(stash);
-			stash = f_del_front_bn(stash);
-			free(buf);
-			return(line);
-		}
+		// // a supprimer ??
+		// else if (ret > 0 && ret < BUFFER_SIZE) // BUFFER_SIZE > ret > 0
+		// {
+		// 	if (!stash)
+		// 	{
+		// 		stash = malloc(sizeof(char) * 1);
+		// 		*stash = 0;
+		// 	}
+		// 	stash = ft_strjoin(stash,buf);
+		// 	line = f_search_bn(stash);
+		// 	stash = f_del_front_bn(stash);
+		// 	free(buf);
+		// 	return(line);
+		// }
 
 		else // cas classique BUFFER_SIZE == ret
 		{

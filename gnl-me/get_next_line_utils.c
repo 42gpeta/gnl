@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 16:15:55 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/14 18:39:59 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ char	*f_del_front_bn(char *buf) // v2
 	int		len;
 	
 	i = 0;
-	while (buf && buf[i] != '\n')
+	while (buf[i] && buf[i] != '\n')
 		i++;
 	i++;
 	len = ft_strlen(buf) - i;
