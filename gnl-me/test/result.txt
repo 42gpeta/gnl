@@ -1,0 +1,4 @@
+cc -g main.c get_next_line.c get_next_line_utils.c && ./a.out
+[0] : 01234567890123456789012345678901234567890
+c'est NULL
+close() succes : 3

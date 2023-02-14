@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 15:24:23 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/14 16:05:16 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,11 @@ char	*f_search_bn(char *stash) // v2
 		line[i] = stash[i];
 		i++;
 	}
-	line[i] = '\n';
-	i++;
+	if (stash[i] == '\n')
+	{
+		line[i] = '\n';
+		i++;
+	} 
 	line[i] = '\0';
 	// free(stash); // ****
 	return (line);
