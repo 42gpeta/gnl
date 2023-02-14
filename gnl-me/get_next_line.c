@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 15:15:47 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/14 15:43:59 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	int		ret;
 
 	/* Protection si pas de fichier OU BUFFER_SIZE a 0 */
-	if (fd < 0 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE <= 0)
+	if (fd <= 0 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE <= 0)
 		return (NULL);
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -40,7 +40,7 @@ char	*get_next_line(int fd)
 
 		if (ret < 0)
 		{
-			printf("error a traitee\n"); // a supprimer
+			// printf("error a traitee\n"); // a supprimer
 			return (NULL);
 		}
 
@@ -53,7 +53,7 @@ char	*get_next_line(int fd)
 				*stash = 0;
 				return(line);
 			}
-			printf("ret == 0\n"); // a supprimer
+			// printf("ret == 0\n"); // a supprimer
 			free(line);
 			break;
 		}
