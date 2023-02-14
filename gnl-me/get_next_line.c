@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/13 18:41:33 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/14 15:15:47 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ char	*get_next_line(int fd)
 		buf[ret] = '\0';
 
 		if (ret < 0)
+		{
 			printf("error a traitee\n"); // a supprimer
+			return (NULL);
+		}
 
 		else if (ret == 0)
 		{

@@ -1,6 +1,4 @@
-[37mfiles/41_with_nl: [31m1.KO [32m2.OK [32m3.OK ret == 0
 [37mfiles/41_no_nl: [31m1.KO [93m2.SIGSEGV[0m
-[37mfiles/41_with_nl: [31m1.KO [32m2.OK [32m3.OK ret == 0
 [37mfiles/43_no_nl: [31m1.KO [93m2.SIGSEGV[0m
 [37mfiles/multiple_nlx5: [32m1.OK [31m2.KO ret == 0
 [37mfiles/multiple_line_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [93m6.SIGSEGV[0m
@@ -9,7 +7,6 @@
 [37mfiles/big_line_no_nl: [31m1.KO [93m2.SIGSEGV[0m
 [37mstdin: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [32m6.OK [31m7.KO ret == 0
 [37mfiles/41_no_nl: [31m1.KO [93m2.SIGSEGV[0m
-[37mfiles/41_with_nl: [31m1.KO [32m2.OK [32m3.OK ret == 0
 [37mfiles/42_no_nl: [31m1.KO [93m2.SIGSEGV[0m
 [37mfiles/43_no_nl: [31m1.KO [93m2.SIGSEGV[0m
 [37mfiles/multiple_nlx5: [32m1.OK [31m2.KO ret == 0

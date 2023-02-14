@@ -63,6 +63,11 @@ re : fclean all
 
 .PHONY : all clean fclean re log
 
+## dans le Makefile du testeur
+# ko-list :
+#	make m 2> ../test/ko.c | grep "KO" 1> ../test/ko-list.txt
+#	rm ../test/ko.c
+
 
 
 
