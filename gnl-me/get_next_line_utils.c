@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/15 15:56:48 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 18:24:29 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ char	*f_search_bn(char *stash, char **new_stash) // v4
 // 	return (new_stash);
 // }
 
-char	*ft_strdup2(char *s)
+char	*ft_strdup2(char *s) // originale
 {
 	size_t	i;
 	char	*ps;
@@ -228,5 +228,74 @@ char	*ft_strdup2(char *s)
 	ps[i] = '\0';
 	free(s);
 	return (ps);
+}
+
+// char	*ft_strdup2(char *s, char **new_s) // v2
+// {
+// 	size_t	i;
+// 	char	*ps;
+// 	size_t	len;
+
+// 	len = ft_strlen(s);
+// 	ps = malloc(sizeof(char) * len + 1);
+// 	if (!ps)
+// 		return (NULL);
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		ps[i] = s[i];
+// 		i++;
+// 	}
+// 	ps[i] = '\0';
+// 	free(s);
+// 	*new_s = 0;
+// 	return (ps);
+// }
+
+// char	*f_ret_zero(char **line, char **stash) // originale
+// {
+// 	*line = 0;
+	
+// 	if (&stash != 0)
+// 	{
+// 		if (ft_strchr(*stash, '\n'))
+// 		{
+// 			*line = f_search_bn(*stash, &stash);
+// 		}
+// 	*line = ft_strdup2(*stash);
+// 	*stash = 0;
+// 	}
+// }
+
+char	*f_ret_zero(char **stash) // v2
+{
+	char	*line;
+
+	line = 0;
+	if (**stash != 0)
+	{
+		if (ft_strchr(*stash, '\n'))
+			return (line = f_search_bn(*stash, stash), line);
+		line = ft_strdup2(*stash);
+		**stash = 0;
+		return(line);
+	}
+	return (line);
+}
+
+void	f_give_stash(char **stash, char **buf)
+{
+	if (!*stash)
+	{
+		*stash = malloc(sizeof(char));
+		**stash = 0;
+	}
+	*stash = ft_strjoin(*stash, *buf);
+}
+
+void	f_initiate_buf_and_ret(char **buf, int *ret)
+{
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	*ret = BUFFER_SIZE;
 }
 
