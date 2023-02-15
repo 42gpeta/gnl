@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/15 15:35:38 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 16:05:01 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*get_next_line(int fd)
 {
 	char	*buf;
 	static char	*stash = 0;
-	// static char	*stash;
 	char	*line;
 	int		ret;
 
@@ -32,10 +31,10 @@ char	*get_next_line(int fd)
 	
 	if (ft_strchr(stash, '\n'))
 	{
-		line = f_search_bn(stash, &stash);
+		// line = f_search_bn(stash, &stash);
 		// line = f_search_bn(stash);
 		// stash = f_del_front_bn(stash);
-		return (line);
+		return (line = f_search_bn(stash, &stash), line);
 	}
 
 
@@ -61,16 +60,15 @@ char	*get_next_line(int fd)
 				// if (f_search_bn(stash))
 				if (ft_strchr(stash, '\n'))
 				{
-					line = f_search_bn(stash, &stash);
+					// line = f_search_bn(stash, &stash);
 					// line = f_search_bn(stash);
 					// stash = f_del_front_bn(stash);
-					return (line);
+					return (line = f_search_bn(stash, &stash), line);
 				}
 				line = ft_strdup2(stash);
 				*stash = 0;
 				return(line);
 			}
-			// printf("ret == 0\n"); // a supprimer
 			free(line);
 			break;
 		}
@@ -86,11 +84,11 @@ char	*get_next_line(int fd)
 
 			if (ft_strchr(stash, '\n'))
 			{
-				line = f_search_bn(stash, &stash);
+				// line = f_search_bn(stash, &stash);
 				// line = f_search_bn(stash);
 				// stash = f_del_front_bn(buf);
 				// free(buf); // ici ou dans la fonction f_del_front_bn ? ici == no leaks
-				return (line);
+				return (line = f_search_bn(stash, &stash), line);
 			}
 		}
 	}
