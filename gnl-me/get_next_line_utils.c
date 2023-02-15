@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/15 18:24:29 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 21:48:53 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,9 +293,25 @@ void	f_give_stash(char **stash, char **buf)
 	*stash = ft_strjoin(*stash, *buf);
 }
 
-void	f_initiate_buf_and_ret(char **buf, int *ret)
+char	*f_ret(int fd, char **buf, char **stash)
 {
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	*ret = BUFFER_SIZE;
-}
+	int	ret;
 
+	ret = BUFFER_SIZE;
+	while (ret)
+	{
+		ret = read(fd, *buf, BUFFER_SIZE);
+		(*buf)[ret] = '\0';
+		if (ret < 0)
+			return (NULL);
+		else if (ret == 0 && *stash != 0)
+			return(f_ret_zero(stash));
+		else // cas classique BUFFER_SIZE == ret
+		{
+			f_give_stash(stash, buf);
+			if (ft_strchr(*stash, '\n'))
+				return (f_search_bn(*stash, stash));
+		}
+	}
+	return (NULL);
+}
