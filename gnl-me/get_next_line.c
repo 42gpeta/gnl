@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/15 15:21:07 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 15:35:38 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ char	*get_next_line(int fd)
 	
 	if (ft_strchr(stash, '\n'))
 	{
-		line = f_search_bn(stash);
-		stash = f_del_front_bn(stash);
+		line = f_search_bn(stash, &stash);
+		// line = f_search_bn(stash);
+		// stash = f_del_front_bn(stash);
 		return (line);
 	}
 
@@ -60,9 +61,9 @@ char	*get_next_line(int fd)
 				// if (f_search_bn(stash))
 				if (ft_strchr(stash, '\n'))
 				{
-					// line = f_search_bn(stash, &stash);
-					line = f_search_bn(stash);
-					stash = f_del_front_bn(stash);
+					line = f_search_bn(stash, &stash);
+					// line = f_search_bn(stash);
+					// stash = f_del_front_bn(stash);
 					return (line);
 				}
 				line = ft_strdup2(stash);
@@ -85,8 +86,9 @@ char	*get_next_line(int fd)
 
 			if (ft_strchr(stash, '\n'))
 			{
-				line = f_search_bn(stash);
-				stash = f_del_front_bn(buf);
+				line = f_search_bn(stash, &stash);
+				// line = f_search_bn(stash);
+				// stash = f_del_front_bn(buf);
 				// free(buf); // ici ou dans la fonction f_del_front_bn ? ici == no leaks
 				return (line);
 			}
