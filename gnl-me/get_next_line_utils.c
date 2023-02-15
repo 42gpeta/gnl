@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/15 11:02:27 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 15:19:16 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,41 @@ char	*f_search_bn(char *stash) // v2
 	// free(stash); // ****
 	return (line);
 }
+
+// char	*f_search_bn(char *stash, char **new_stash) // v3
+// {
+// 	char	*line;
+// 	int		i;
+
+// 	i = 0;
+// 	while (stash[i] && stash[i] != '\n')
+// 		i++;
+// 	i++;
+
+// 	if (ft_strchr(stash, '\n') == NULL)
+// 		line = malloc(sizeof(char) * i + 1);
+// 	else
+// 		line = malloc(sizeof(char) * i + 2);
+
+// 	/* Protection des mallocs */
+// 	if (!line || !stash)
+// 		return (NULL);
+// 	i = 0;
+// 	while (stash[i] && stash[i] != '\n')
+// 	{
+// 		line[i] = stash[i];
+// 		i++;
+// 	}
+// 	if (stash[i] == '\n')
+// 	{
+// 		line[i] = '\n';
+// 		i++;
+// 	} 
+// 	line[i] = '\0';
+// 	*new_stash = ft_strchr(stash, '\n') + 1;
+// 	free(stash); // ****
+// 	return (line);
+// }
 
 /* Reprend ce qui est a droite du /n (dans le buf) vers la stash */
 char	*f_del_front_bn(char *buf) // v2
