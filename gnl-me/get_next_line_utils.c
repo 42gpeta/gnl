@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 18:39:59 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 11:02:27 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,75 +148,6 @@ char	*f_del_front_bn(char *buf) // v2
 	new_stash[j] = '\0';
 	free (buf); // ici ou dans la fonction get_next_line ? ici == leaks
 	return (new_stash);
-}
-
-char	*delete(char *stash)
-{
-	int	i;
-	int j;
-	int len;
-	char	*str;
-	str = 0;
-	i = 0;
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	i++;
-	len = (ft_strlen(stash)- i);
-	printf("len : %d\n", len);
-	str = malloc(sizeof(char) * (len) + 1);
-	j = 0;
-	while (stash[i])
-	{
-		str[j] = stash[i];
-		i++;
-		j++;
-	}
-	j++;
-	str[j] = '\0';
-	free(stash);
-	return (str);
-}
-
-char	*f_last_line(char *stash) // v2
-{
-	char	*lst_line;
-	int		i;
-
-	if (!stash)
-		return (NULL);
-
-	lst_line = malloc(sizeof(char) * (ft_strlen(stash) + 1));
-	if (!lst_line)
-		return (NULL);
-
-	i = 0;
-	while (stash[i] != '\0')
-	{
-		lst_line[i] = stash[i];
-		i++;
-	}
-	lst_line[i] = '\0';
-	return (lst_line);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	char	*ps;
-	size_t	len;
-
-	len = ft_strlen(s);
-	ps = malloc(sizeof(char) * len + 1);
-	if (!ps)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		ps[i] = s[i];
-		i++;
-	}
-	ps[i] = '\0';
-	return (ps);
 }
 
 char	*ft_strdup2(char *s)

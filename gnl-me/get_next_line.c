@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/14 19:22:34 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/15 10:56:33 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ char	*get_next_line(int fd)
 	// ret = read(fd, buf, BUFFER_SIZE);
 	while (ret)
 	{
-		if (!ft_strchr(stash, '\n'))
-		{
-			ret = read(fd, buf, BUFFER_SIZE);
-			buf[ret] = '\0';
-		}
+		ret = read(fd, buf, BUFFER_SIZE);
+		buf[ret] = '\0';
 
 		if (ret < 0)
 		{
@@ -74,21 +71,6 @@ char	*get_next_line(int fd)
 			free(line);
 			break;
 		}
-
-		// // a supprimer ??
-		// else if (ret > 0 && ret < BUFFER_SIZE) // BUFFER_SIZE > ret > 0
-		// {
-		// 	if (!stash)
-		// 	{
-		// 		stash = malloc(sizeof(char) * 1);
-		// 		*stash = 0;
-		// 	}
-		// 	stash = ft_strjoin(stash,buf);
-		// 	line = f_search_bn(stash);
-		// 	stash = f_del_front_bn(stash);
-		// 	free(buf);
-		// 	return(line);
-		// }
 
 		else // cas classique BUFFER_SIZE == ret
 		{
