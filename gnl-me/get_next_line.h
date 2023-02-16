@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/15 21:46:20 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/16 14:44:40 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,15 @@
 #  define BUFFER_SIZE 41 /* testeur */
 # endif
 
-/* STRUCTURE */
-typedef struct s_line
-{
-	char			*content;
-	struct s_line	*next;
-}	t_line;
-
 /* FUNCTION */
 char	*get_next_line(int fd);
-// char	*f_search_bn(char *stash);
 char	*f_search_bn(char *stash, char **new_stash);
-// char	*f_del_front_bn(char *stash);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup2(char *s);
-// char	*ft_strdup2(char *s, char **new_s);
 char	*f_ret_zero(char **stash) ;
 void	f_give_stash(char **stash, char **buf);
 char	*f_ret(int fd, char **buf, char **stash);
-
 
 #endif

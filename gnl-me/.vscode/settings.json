@@ -18,6 +18,7 @@
 		"tuple": "c",
 		"utility": "c",
 		"string_view": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"stdint.h": "c"
 	}
 }
