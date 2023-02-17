@@ -43,6 +43,20 @@ val :
 	cc -g main.c get_next_line.c get_next_line_utils.c
 	valgrind --leak-check=full ./a.out
 
+free : 
+	@echo "*** GESTION FREE ***"
+	@echo ------------------------------------------
+	@echo "*** RESULT ***" 
+	@echo "" 
+	@cc -g main.c get_next_line.c get_next_line_utils.c
+	@valgrind --leak-check=full ./a.out 2> ./test/result.txt
+	@echo ------------------------------------------
+	@echo "*** FREE ***"
+	@echo "" 
+	@grep "total heap" ./test/result.txt
+	@grep "ERROR SUMMARY" ./test/result.txt
+	@echo ------------------------------------------
+	
 # ko_list :
 # 	make m 2> ../test/ko | grep "KO" 1> ../test/ko-list.txt
 # 	rm ../test/ko
@@ -61,7 +75,7 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re log
+.PHONY : all clean fclean re log val free
 
 ## dans le Makefile du testeur
 # ko-list :

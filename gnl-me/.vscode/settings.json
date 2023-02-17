@@ -19,6 +19,7 @@
 		"utility": "c",
 		"string_view": "c",
 		"typeinfo": "c",
-		"stdint.h": "c"
+		"stdint.h": "c",
+		"stdio.h": "c"
 	}
 }

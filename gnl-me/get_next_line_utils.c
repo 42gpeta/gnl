@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/16 13:42:03 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/17 23:05:22 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,34 @@
 /*											*/
 /********************************************/
 
-char	*f_search_bn(char *stash, char **new_stash) // v4
+// char	*f_search_bn(char *stash, char **new_stash) // v4
+// {
+// 	char	*line;
+// 	int		i;
+
+// 	i = 0;
+// 	while (stash[i] && stash[i] != '\n')
+// 		i++;
+// 	i++;
+// 	if (ft_strchr(stash, '\n') == NULL)
+// 		line = malloc(sizeof(char) * i + 1);
+// 	else
+// 		line = malloc(sizeof(char) * i + 2);
+// 	if (!line || !stash)
+// 		return (NULL);
+// 	i = 0;
+// 	while (stash[i] && stash[i] != '\n')
+// 	{
+// 		line[i] = stash[i];
+// 		i++;
+// 	}
+// 	if (stash[i] == '\n')
+// 		line[i++] = '\n';
+// 	line[i] = '\0';
+// 	return (*new_stash = ft_strchr(stash, '\n') + 1, line);
+// }
+
+char	*f_search_bn(char *stash, char **new_stash) // v5
 {
 	char	*line;
 	int		i;
@@ -42,7 +69,53 @@ char	*f_search_bn(char *stash, char **new_stash) // v4
 	if (stash[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
-	return (*new_stash = ft_strchr(stash, '\n') + 1, line);
+	// *new_stash = ft_strchr(stash, '\n') + 1;
+	*new_stash = ft_strdup2(ft_strchr(stash, '\n') + 1);
+	if (**new_stash == 0)
+	{
+		free(*new_stash);
+		*new_stash = 0;
+	}
+	free(stash); // essai
+	// *stash = 0;
+	return (line);
+}
+
+char	*f_search_bn2(char *stash, char **new_stash, char *buf) // v5
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	i++;
+	if (ft_strchr(stash, '\n') == NULL)
+		line = malloc(sizeof(char) * i + 1);
+	else
+		line = malloc(sizeof(char) * i + 2);
+	if (!line || !stash)
+		return (NULL);
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+	{
+		line[i] = stash[i];
+		i++;
+	}
+	if (stash[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
+	// *new_stash = ft_strchr(stash, '\n') + 1;
+	*new_stash = ft_strdup2(ft_strchr(stash, '\n') + 1);
+	if (**new_stash == 0)
+	{
+		free(*new_stash);
+		*new_stash = 0;
+	}
+	free(stash); // essai
+	// *stash = 0;
+	free(buf);
+	return (line);
 }
 
 char	*ft_strdup2(char *s) // originale
@@ -62,55 +135,76 @@ char	*ft_strdup2(char *s) // originale
 		i++;
 	}
 	ps[i] = '\0';
-	free(s);
+	// free(s);
 	return (ps);
 }
 
-char	*f_ret_zero(char **stash) // v2
+char	*f_ret_zero(char **stash, char *buf) // v2
 {
 	char	*line;
 
+	free(buf);
 	line = 0;
 	if (**stash != 0)
 	{
 		if (ft_strchr(*stash, '\n'))
 			return (line = f_search_bn(*stash, stash), line);
 		line = ft_strdup2(*stash);
-		**stash = 0;
+		free(*stash); //infini
+		*stash = 0;
 		return(line);
 	}
 	return (line);
 }
 
-void	f_give_stash(char **stash, char **buf)
-{
-	if (!*stash)
-	{
-		*stash = malloc(sizeof(char));
-		**stash = 0;
-	}
-	*stash = ft_strjoin(*stash, *buf);
-}
+// void	f_give_stash(char **stash, char **buf)
+// {
+// 	if (!*stash)
+// 	{
+// 		*stash = malloc(sizeof(char));
+// 		**stash = 0;
+// 	}
+// 	*stash = ft_strjoin(*stash, *buf);
+// 	free(*buf); // test
+// 	*buf = 0;
+// }
 
-char	*f_ret(int fd, char **buf, char **stash)
+char	*f_ret(int fd, char **stash)
 {
-	int	ret;
-
+	int		ret;
+	char	*buf;
+	
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 2));
+	if (!buf)
+		return (NULL);
+	// ret = BUFFER_SIZE;
 	ret = BUFFER_SIZE;
 	while (ret)
 	{
-		ret = read(fd, *buf, BUFFER_SIZE);
-		(*buf)[ret] = '\0';
+		// if (buf != NULL)
+		// 	free(buf); // test
+		ret = read(fd, buf, BUFFER_SIZE + 1);
+		buf[ret] = '\0';
 		if (ret < 0)
 			return (NULL);
 		else if (ret == 0 && *stash != 0)
-			return(f_ret_zero(stash));
+			return(f_ret_zero(stash, buf));
 		else // cas classique BUFFER_SIZE == ret
 		{
-			f_give_stash(stash, buf);
+			if (!*stash)
+				*stash = ft_strdup2(buf);
+			else
+			// f_give_stash(stash, &buf);
+			// *stash = malloc(sizeof(char));
+				*stash = ft_strjoin(*stash, buf);
+			// free(buf); // test
 			if (ft_strchr(*stash, '\n'))
-				return (f_search_bn(*stash, stash));
+				return (f_search_bn2(*stash, stash, buf));
 		}
+		// free(*stash); // double free
+		// free(buf); // double free
 	}
+	free(*stash);
+	free(buf);
 	return (NULL);
 }

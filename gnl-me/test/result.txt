@@ -1,15 +1,56 @@
-cc -g main.c get_next_line.c get_next_line_utils.c && ./a.out
-[0] : 01234567890123456789012345678901234567890
-
-[1] : 
-
-[2] : 
-
-[3] : 
-
-[4] : 
-
-[5] : 01234567890123456789012345678901234567890
-
-c'est NULL
-close() succes : 3
+==3421819== Memcheck, a memory error detector
+==3421819== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3421819== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==3421819== Command: ./a.out
+==3421819== 
+==3421819== 
+==3421819== HEAP SUMMARY:
+==3421819==     in use at exit: 466 bytes in 13 blocks
+==3421819==   total heap usage: 23 allocs, 10 frees, 2,006 bytes allocated
+==3421819== 
+==3421819== 1 bytes in 1 blocks are definitely lost in loss record 2 of 6
+==3421819==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3421819==    by 0x4017B9: ft_strdup2 (get_next_line_utils.c:86)
+==3421819==    by 0x401761: f_search_bn (get_next_line_utils.c:73)
+==3421819==    by 0x4019F1: f_ret (get_next_line_utils.c:159)
+==3421819==    by 0x401353: get_next_line (get_next_line.c:30)
+==3421819==    by 0x4011E2: main (main.c:50)
+==3421819== 
+==3421819== 43 bytes in 1 blocks are definitely lost in loss record 3 of 6
+==3421819==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3421819==    by 0x4018F8: f_ret (get_next_line_utils.c:134)
+==3421819==    by 0x401353: get_next_line (get_next_line.c:30)
+==3421819==    by 0x4011E2: main (main.c:50)
+==3421819== 
+==3421819== 85 bytes in 2 blocks are definitely lost in loss record 4 of 6
+==3421819==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3421819==    by 0x4014A9: ft_strjoin (get_next_line.c:103)
+==3421819==    by 0x4019BC: f_ret (get_next_line_utils.c:156)
+==3421819==    by 0x401353: get_next_line (get_next_line.c:30)
+==3421819==    by 0x40122A: main (main.c:57)
+==3421819== 
+==3421819== 121 bytes in 3 blocks are definitely lost in loss record 5 of 6
+==3421819==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3421819==    by 0x4017B9: ft_strdup2 (get_next_line_utils.c:86)
+==3421819==    by 0x401761: f_search_bn (get_next_line_utils.c:73)
+==3421819==    by 0x4019F1: f_ret (get_next_line_utils.c:159)
+==3421819==    by 0x401353: get_next_line (get_next_line.c:30)
+==3421819==    by 0x40122A: main (main.c:57)
+==3421819== 
+==3421819== 215 bytes in 5 blocks are definitely lost in loss record 6 of 6
+==3421819==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3421819==    by 0x4018F8: f_ret (get_next_line_utils.c:134)
+==3421819==    by 0x401353: get_next_line (get_next_line.c:30)
+==3421819==    by 0x40122A: main (main.c:57)
+==3421819== 
+==3421819== LEAK SUMMARY:
+==3421819==    definitely lost: 465 bytes in 12 blocks
+==3421819==    indirectly lost: 0 bytes in 0 blocks
+==3421819==      possibly lost: 0 bytes in 0 blocks
+==3421819==    still reachable: 1 bytes in 1 blocks
+==3421819==         suppressed: 0 bytes in 0 blocks
+==3421819== Reachable blocks (those to which a pointer was found) are not shown.
+==3421819== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==3421819== 
+==3421819== For lists of detected and suppressed errors, rerun with: -s
+==3421819== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)

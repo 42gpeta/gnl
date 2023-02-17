@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/16 14:44:40 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/17 23:09:05 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,23 @@
 // #  define BUFFER_SIZE 7 /* par default */
 // #  define BUFFER_SIZE 12583 /* limite dans ME 10 */
 // #  define BUFFER_SIZE 100000 /* limite dans ME 11 */
-#  define BUFFER_SIZE 41 /* testeur */
+#  define BUFFER_SIZE 1 /* testeur */
 # endif
 
 /* FUNCTION */
 char	*get_next_line(int fd);
 char	*f_search_bn(char *stash, char **new_stash);
+char	*f_search_bn2(char *stash, char **new_stash, char *buf);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+// char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup2(char *s);
-char	*f_ret_zero(char **stash) ;
-void	f_give_stash(char **stash, char **buf);
-char	*f_ret(int fd, char **buf, char **stash);
+// char	*f_ret_zero(char **stash) ;
+char	*f_ret_zero(char **stash, char *buf);
+// void	f_give_stash(char **stash, char **buf);
+// void	f_give_stash(char **stash, char **buf);
+// char	*f_ret(int fd, char **buf, char **stash);
+char	*f_ret(int fd, char **stash);
 
 #endif
