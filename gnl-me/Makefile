@@ -61,9 +61,9 @@ free :
 # 	make m 2> ../test/ko | grep "KO" 1> ../test/ko-list.txt
 # 	rm ../test/ko
 
-# result : main
-#	$(CC) $(SRC_MAIN) && ./a.out > ./test/result.txt
-#	cat -e ./test/result.txt
+result : main
+	$(CC) $(SRC_MAIN) && ./a.out > ./test/result.txt
+	cat -e ./test/result.txt
 
 log :
 	git log | grep "    " | head -3  | cut -c 5-
@@ -75,7 +75,7 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re log val free
+.PHONY : all clean fclean re log val free result
 
 ## dans le Makefile du testeur
 # ko-list :

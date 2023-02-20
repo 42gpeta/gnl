@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/17 23:09:05 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/20 18:56:50 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ char	*f_ret_zero(char **stash, char *buf);
 // void	f_give_stash(char **stash, char **buf);
 // char	*f_ret(int fd, char **buf, char **stash);
 char	*f_ret(int fd, char **stash);
+void	f_free(char **stash, char **buf); // sup ?
+// int	f_buf(int fd, char **buf, int ret); // sup ?
+// int	*f_buf(int fd, char **buf, int ret); // sup ?
 
 #endif

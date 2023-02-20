@@ -1,2 +1,0 @@
-[37mfiles/alternate_line_nl_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [32m6.OK [93m7.SIGSEGV[0m
-[37mfiles/alternate_line_nl_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [31m5.KO [32m6.OK [31m7.KO [93m8.SIGSEGV[0m

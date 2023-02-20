@@ -1,0 +1,1 @@
+[37mfiles/42_with_nl: [32m1.OK [31m2.KO [31m3.KO [0m

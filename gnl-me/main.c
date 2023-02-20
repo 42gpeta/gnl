@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:50:28 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/17 22:58:34 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/20 19:04:20 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 	// fd = open("./fichiers/41_no_nl", O_RDONLY);
 	// fd = open("./fichiers/41_with_nl", O_RDONLY); // error : derniere ligne ne s'affiche pas
 	// fd = open("./fichiers/42_no_nl", O_RDONLY);
-	// fd = open("./fichiers/42_with_nl", O_RDONLY);
+	fd = open("./fichiers/42_with_nl", O_RDONLY);
 	// fd = open("./fichiers/43_no_nl", O_RDONLY);
 	// fd = open("./fichiers/43_with_nl", O_RDONLY);
 
@@ -34,7 +34,7 @@ int	main(void)
 
 	// fd = open("./fichiers/big_line_no_nl", O_RDONLY);
 	// fd = open("./fichiers/big_line_with_nl", O_RDONLY);
-	fd = open("./fichiers/empty", O_RDONLY);
+	// fd = open("./fichiers/empty", O_RDONLY);
 	// fd = open("./fichiers/multiple_line_no_nl", O_RDONLY);
 	// fd = open("./fichiers/multiple_line_with_nl", O_RDONLY);
 	// fd = open("./fichiers/multiple_nlx5", O_RDONLY);
