@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/21 18:10:57 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 19:15:41 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 char	*get_next_line(int fd) // v3
 {
-	// char	*buf;
 	static char	*stash = 0;
-	// int	index = 0;
+	int			ret;
 
-	// if (fd == 0)
-	// 	return (NULL);
-	// if (fd < 1 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE < 1)
+	ret = BUFFER_SIZE;
+
 	if (fd < 0 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE < 1 || read(fd, NULL, 0) == -1)
 		return (NULL);
-	// index++;
-	// printf("gnl cunt : %d\n", index);
 	if (ft_strchr(stash, '\n'))
 		return (f_search_bn(stash, &stash));
-	// buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	// if (!buf)
-	// 	return (NULL);
-	return (f_ret(fd, &stash));
+	return (f_ret(fd, &stash, ret));
 }
 
 /********************************************/
@@ -136,8 +129,6 @@ char	*ft_strjoin(char *s1, char *s2) // v2
 		j++;
 	}
 	join [i + j] = '\0';
-	// if (s1)
 	free(s1);
-	// free(s2);
 	return (join);
 }

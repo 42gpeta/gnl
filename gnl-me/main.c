@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:50:28 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/21 11:30:05 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 18:20:04 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(void)
 	// fd = open("./fichiers/multiple_nlx5", O_RDONLY);
 	// fd = open("./fichiers/nl", O_RDONLY);
 
-	// fd = 1000;
+	// fd = 0;
 	// if (fd == -1)
 	// {
 	// 	printf("open() fail\n");

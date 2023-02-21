@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/21 11:50:40 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 19:43:54 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 char	*get_next_line(int fd);
 char	*f_search_bn(char *stash, char **new_stash);
 char	*f_search_bn2(char *stash, char **new_stash, char *buf);
+// char	*f_search_bn2(char *stash, char **new_stash, char *buf, char **nline);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 // char	*ft_strjoin(char const *s1, char const *s2);
@@ -42,7 +43,8 @@ char	*f_ret_zero(char **stash, char *buf);
 // void	f_give_stash(char **stash, char **buf);
 // void	f_give_stash(char **stash, char **buf);
 // char	*f_ret(int fd, char **buf, char **stash);
-char	*f_ret(int fd, char **stash);
+// char	*f_ret(int fd, char **stash);
+char	*f_ret(int fd, char **stash, int ret);
 void	f_free(char **stash, char **buf); // sup ?
 // int	f_buf(int fd, char **buf, int ret); // sup ?
 // int	*f_buf(int fd, char **buf, int ret); // sup ?
