@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/21 11:58:53 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 18:10:57 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_next_line(int fd) // v3
 	// if (fd == 0)
 	// 	return (NULL);
 	// if (fd < 1 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE < 1)
-	if (fd < 1 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE < 1 || read(fd, NULL, 0) == -1)
+	if (fd < 0 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE < 1 || read(fd, NULL, 0) == -1)
 		return (NULL);
 	// index++;
 	// printf("gnl cunt : %d\n", index);
@@ -58,8 +58,8 @@ char	*ft_strchr(const char *s, int c) // v2
 {
 	if (!s)
 		return (NULL);
-	// if (*s == '\0')
-	// 	return (NULL);
+	if (*s == '\0')
+		return (NULL);
 	while (*s != '\0')
 	{
 		if (*s == (unsigned char)c)
