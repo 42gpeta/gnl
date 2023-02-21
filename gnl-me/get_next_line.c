@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/21 20:08:17 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 20:19:48 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,6 @@ char	*get_next_line(int fd)
 		return (f_search_bn(stash, &stash));
 	return (f_ret(fd, &stash, ret));
 }
-
-/********************************************/
-/*											*/
-/*			#1	DEJA CODE					*/
-/*											*/
-/********************************************/
-
-// char	*ft_strchr(const char *s, int c) // v2
-// {
-// 	if (!s)
-// 		return (NULL);
-// 	while (*s != '\0')
-// 	{
-// 		if (*s == (unsigned char)c)
-// 			return ((char *)s);
-// 		s++;
-// 	}
-// 	if (c == '\0')
-// 		return ((char *)s);
-// 	return (NULL);
-// }
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -75,34 +54,6 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-// char	*ft_strjoin(char const *s1, char const *s2) // originale
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*join;
-// 	int		len;
-
-// 	len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
-// 	join = NULL;
-// 	join = malloc(sizeof(char) * (len + 1));
-// 	if (!join)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s1[i] && s1[i] != '\0')
-// 	{
-// 		join[i] = s1[i];
-// 		i++;
-// 	}
-// 	j = 0;
-// 	while (s2[j] && s2[j] != '\0')
-// 	{
-// 		join[i + j] = s2[j];
-// 		j++;
-// 	}
-// 	join [i + j] = '\0';
-// 	return (join);
-// }
 
 char	*ft_strjoin(char *s1, char *s2)
 {

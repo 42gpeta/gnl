@@ -73,6 +73,8 @@ result : $(SRC_MAIN)
 log :
 	git log | grep "    " | head -3  | cut -c 5-
 
+normi :
+	$(NORMINETTE)
 clean :
 	rm -rf $(OBJ)
 
@@ -80,7 +82,7 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re log val free result
+.PHONY : all clean fclean re log val free result normi
 
 ## dans le Makefile du testeur
 # ko-list :
