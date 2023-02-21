@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:14 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/20 19:14:37 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 12:28:09 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ char	*f_ret_zero(char **stash, char *buf) // v2
 	char	*line;
 
 	free(buf);
+	buf = 0;
 	line = 0;
 	if (**stash != 0)
 	{
@@ -332,7 +333,7 @@ char	*f_ret(int fd, char **stash) // v4
 	ret = BUFFER_SIZE;
 	while (ret)
 	{
-		ret = read(fd, buf, BUFFER_SIZE + 0);
+		ret = read(fd, buf, BUFFER_SIZE);
 		// if (!stash && ret == 0)
 		// 	buf[ret] = '\0';
 		buf[ret] = '\0';
@@ -357,4 +358,6 @@ void	f_free(char **stash, char **buf)
 {
 	free(*stash);
 	free(*buf);
+	*stash = 0;
+	*buf = 0;
 }

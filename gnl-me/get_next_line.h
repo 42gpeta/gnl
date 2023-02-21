@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:27:17 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/20 18:56:50 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/02/21 11:50:40 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 /* BUFFER */
 # ifndef BUFFER_SIZE
 // #  define BUFFER_SIZE 7 /* par default */
-// #  define BUFFER_SIZE 12583 /* limite dans ME 10 */
-// #  define BUFFER_SIZE 100000 /* limite dans ME 11 */
-#  define BUFFER_SIZE 1 /* testeur */
+// #  define BUFFER_SIZE 1 /* testeur */
+// #  define BUFFER_SIZE 42 /* testeur */
+#  define BUFFER_SIZE 10000000 /* testeur */
 # endif
 
 /* FUNCTION */
