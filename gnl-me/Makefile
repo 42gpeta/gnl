@@ -7,6 +7,7 @@ NORMINETTE =	norminette -R CheckForbiddenSourceHeader *.c *.h
 ##	SOURCES
 
 SRC_MAIN = main.c get_next_line.c get_next_line_utils.c
+SRC_BONUS = main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c
 SRC_MAINTEST = maintest.c get_next_line.c get_next_line_utils.c
 
 OBJ = $(SRC:.c=.o)
@@ -29,8 +30,15 @@ main : $(OBJ)
 	$(CC) -g $(SRC_MAIN) && ./a.out
 #	$(CC) $(CFLAGS) $(SRC_MAIN)&& ./a.out
 
+bonus : $(OBJ)
+	$(CC) -g $(SRC_BONUS) && ./a.out
+#	$(CC) $(CFLAGS) $(SRC_MAIN)&& ./a.out
+
 gdb_main :
 	$(CC) -g $(SRC_MAIN) && gdb ./a.out
+
+gdb_bonus :
+	$(CC) -g $(SRC_BONUS) && gdb ./a.out
 
 maintest :
 	$(CC) -g $(SRC_MAINTEST) && ./a.out
@@ -43,7 +51,11 @@ val :
 	cc -g main.c get_next_line.c get_next_line_utils.c
 	valgrind --leak-check=full ./a.out
 
-free : 
+val_bonus :
+	cc -g main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c
+	valgrind --leak-check=full ./a.out
+
+free :
 	@echo "*** GESTION FREE ***"
 	@echo ------------------------------------------
 	@echo "*** RESULT ***" 
@@ -56,7 +68,21 @@ free :
 	@grep "total heap" ./test/result.txt
 	@grep "ERROR SUMMARY" ./test/result.txt
 	@echo ------------------------------------------
-	
+
+free_bonus :
+	@echo "*** GESTION FREE BONUS ***"
+	@echo ------------------------------------------
+	@echo "*** RESULT BONUS ***" 
+	@echo "" 
+	@cc -g main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c get_next_line_bonus.h
+	@valgrind --leak-check=full ./a.out 2> ./test/result_bonus.txt
+	@echo ------------------------------------------
+	@echo "*** FREE BONUS ***"
+	@echo "" 
+	@grep "total heap" ./test/result_bonus.txt
+	@grep "ERROR SUMMARY" ./test/result_bonus.txt
+	@echo ------------------------------------------
+
 # ko_list :
 # 	make m 2> ../test/ko | grep "KO" 1> ../test/ko-list.txt
 # 	rm ../test/ko
@@ -82,7 +108,7 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re log val free result normi
+.PHONY : all bonus clean fclean re log val val_bonus free result normi
 
 ## dans le Makefile du testeur
 # ko-list :
