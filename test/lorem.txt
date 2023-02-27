@@ -1,2 +1,0 @@
-sqlut on tedte gnl
-on veut pqs de cett elin get_next_line

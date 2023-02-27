@@ -22,10 +22,7 @@
 
 /* BUFFER */
 # ifndef BUFFER_SIZE
-// #  define BUFFER_SIZE 7 /* par default */
-// #  define BUFFER_SIZE 1 /* testeur */
-// #  define BUFFER_SIZE 42 /* testeur */
-#  define BUFFER_SIZE 10000000 /* testeur */
+#  define BUFFER_SIZE 7
 # endif
 
 /* FUNCTION */
