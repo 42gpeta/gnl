@@ -6,12 +6,13 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:22:37 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/28 19:22:13 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/03/01 12:59:21 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
+# define INT_MAX 2147483647
 
 /* INCLUDE */
 # include <unistd.h>
