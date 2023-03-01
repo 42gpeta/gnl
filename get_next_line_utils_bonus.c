@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:22:51 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/22 17:33:00 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/03/01 17:50:43 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ char	*f_ret(int fd, char **stash, int ret)
 	while (ret)
 	{
 		ret = read(fd, buf, BUFFER_SIZE);
-		buf[ret] = '\0';
 		if (ret < 0)
 			return (NULL);
-		else if (ret == 0 && *stash != 0)
+		buf[ret] = '\0';
+		if (ret == 0 && *stash != 0)
 			return (f_ret_zero(stash, buf));
 		else
 		{
