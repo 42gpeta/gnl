@@ -6,7 +6,7 @@
 /*   By: gpeta <gpeta@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:47:19 by gpeta             #+#    #+#             */
-/*   Updated: 2023/02/21 20:19:48 by gpeta            ###   ########.fr       */
+/*   Updated: 2023/03/01 12:28:16 by gpeta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	int			ret;
 
 	ret = BUFFER_SIZE;
-	if (fd < 0 || BUFFER_SIZE > 2147483647 || BUFFER_SIZE < 1
+	if (fd < 0 || BUFFER_SIZE > INT_MAX - 1 || BUFFER_SIZE < 1
 		|| read(fd, NULL, 0) == -1)
 		return (NULL);
 	if (ft_strchr(stash, '\n'))
